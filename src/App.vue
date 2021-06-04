@@ -1,11 +1,16 @@
 <template>
   <h1>Todo List</h1>
+  <AddTodo />
+  <Todos />
 </template>
 
 <script>
+import Todos from './components/Todo.vue';
+import AddTodo from './components/AddTodo.vue';
+
 export default {
   name: "App",
-  components: {},
+  components: {Todos, AddTodo},
 };
 </script>
 
