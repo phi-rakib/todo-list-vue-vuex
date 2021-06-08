@@ -27,11 +27,26 @@ const actions = {
       commit("setLoading", false);
     }
   },
+  async deleteTodo({ commit }, id) {
+    commit("setLoading", true);
+    commit("setError", null);
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+      commit("setDeleteTodo", id);
+    } catch (error) {
+      commit("setError", error.message);
+    } finally {
+      commit("setLoading", false);
+    }
+  },
 };
 
 const mutations = {
   setTodos: (state, todos) => {
     state.todos = todos;
+  },
+  setDeleteTodo: (state, payload) => {
+    state.todos = state.todos.filter((todo) => todo.id !== payload);
   },
   setError: (state, error) => {
     state.error = error;
