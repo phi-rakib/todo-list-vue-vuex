@@ -39,6 +39,21 @@ const actions = {
       commit("setLoading", false);
     }
   },
+  async updateTodo({ commit }, todo) {
+    commit("setLoading", true);
+    commit("setError", null);
+    try {
+      await axios.put(
+        `https://jsonplaceholder.typicode.com/todos/${todo.id}`,
+        todo
+      );
+      commit("setUpdateTodo", todo);
+    } catch (error) {
+      commit("setError", error.message);
+    } finally {
+      commit("setLoading", false);
+    }
+  },
 };
 
 const mutations = {
