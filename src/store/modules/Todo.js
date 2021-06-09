@@ -48,6 +48,11 @@ const mutations = {
   setDeleteTodo: (state, payload) => {
     state.todos = state.todos.filter((todo) => todo.id !== payload);
   },
+  setUpdateTodo: (state, payload) => {
+    state.todos = state.todos.map((todo) =>
+      todo.id === payload.id ? payload : todo
+    );
+  },
   setError: (state, error) => {
     state.error = error;
   },
