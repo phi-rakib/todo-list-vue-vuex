@@ -60,6 +60,9 @@ const mutations = {
   setTodos: (state, todos) => {
     state.todos = todos;
   },
+  setCreateTodo: (state, todo) => {
+    state.todos.unshift(todo);
+  },
   setDeleteTodo: (state, payload) => {
     state.todos = state.todos.filter((todo) => todo.id !== payload);
   },
