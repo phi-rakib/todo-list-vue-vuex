@@ -27,6 +27,21 @@ const actions = {
       commit("setLoading", false);
     }
   },
+  async createTodo({ commit }, todo) {
+    commit("setLoading", true);
+    commit("setError", null);
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/todos",
+        todo
+      );
+      commit("setCreateTodo", response.data);
+    } catch (error) {
+      commit("setError", error.message);
+    } finally {
+      commit("setLoading", false);
+    }
+  },
   async deleteTodo({ commit }, id) {
     commit("setLoading", true);
     commit("setError", null);
