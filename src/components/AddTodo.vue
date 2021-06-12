@@ -19,6 +19,11 @@ export default {
   },
   methods: {
     ...mapActions(["createTodo"]),
+    onSubmit(event) {
+      event.preventDefault();
+      this.createTodo({ title: this.title });
+      this.title = "";
+    },
   },
   computed: {},
   created() {},
