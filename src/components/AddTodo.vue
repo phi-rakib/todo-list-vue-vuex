@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form>
+    <form @submit="onSubmit">
       <input type="text" v-model="title" />
       <input type="submit" value="Add" />
     </form>
